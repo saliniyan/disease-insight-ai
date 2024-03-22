@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Notification</title>
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="time"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add Notification</h1>
+        <form id="notificationForm" action="/notification.html" method="POST">
+            <label for="notification-time">Notification Time:</label>
+            <input type="time" id="notification-time" name="notification-time">
+
+            <label for="notification-description">Notification Description:</label>
+            <textarea id="notification-description" name="notification-description" rows="4"></textarea>
+
+            <button type="submit" style="display: block; margin: 0 auto;">Schedule Notification</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+function scheduleNotification() {
+    console.log('Button clicked'); // Add this line
+    const notificationForm = document.getElementById('notificationForm');
+    const notificationTime = notificationForm.querySelector('#notification-time').value;
+    const notificationDescription = notificationForm.querySelector('#notification-description').value;
+
+    notificationForm.reset();
+}
+
+    </script>
+</body>
+</html>
