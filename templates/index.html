@@ -87,6 +87,9 @@
     </video>
     <div class="container">
         <h1 style="text-align: center;">Select Symptoms</h1>
+        <input type="text" id="searchInput" placeholder="Search Symptoms">
+        <button type="button" onclick="searchSymptoms()" class="colorful-button">Search</button>
+
         <form id="symptomsForm">
             <div class="checkbox-group">
                 <label class="checkbox-label"><input type="checkbox" name="symptoms" value="abdominal_pain">abdominal_pain</label>
@@ -229,7 +232,37 @@
         alert('Please select at least one symptom.');
     }
 }
+function searchSymptoms() {
+    var searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
+    var labels = document.querySelectorAll('.checkbox-label');
+    var matchFound = false;
 
-    </script>
+    labels.forEach(function(label) {
+        var labelText = label.textContent.trim().toLowerCase();
+        var checkboxInput = label.querySelector('input[type="checkbox"]');
+
+        if (labelText.includes(searchTerm)) {
+            checkboxInput.style.display = 'inline-block';
+            matchFound = true;
+
+            // Scroll to the matched checkbox and bring it to the top
+            label.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+            checkboxInput.style.display = 'none';
+        }
+    });
+
+    if (!matchFound) {
+        alert('No matching symptom found.');
+    } else {
+        labels.forEach(function(label) {
+            var checkboxInput = label.querySelector('input[type="checkbox"]');
+            checkboxInput.style.display = 'inline-block';
+        });
+    }
+}
+
+
+ </script>
 </body>
 </html>
