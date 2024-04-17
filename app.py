@@ -19,21 +19,15 @@ from apscheduler.schedulers.background import BackgroundScheduler
 
 app = Flask(__name__)
 
-# Load and preprocess the dataset
 df1 = pd.read_csv(r"C:\Users\DELL\Downloads\data (5).csv")
 le = LabelEncoder()
 for i in df1.columns:
     df1[i] = le.fit_transform(df1[i])
 
-# Prepare data for modeling
+
 X = df1.drop('Disease', axis=1)
 y = df1['Disease']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-# Standardize features
-scaler = StandardScaler()
-X_train = scaler.fit_transform(X_train)
-X_test = scaler.transform(X_test)
 
 # Create an ensemble using VotingClassifier
 ensemble_classifier = VotingClassifier(estimators=[
@@ -41,9 +35,8 @@ ensemble_classifier = VotingClassifier(estimators=[
     ('rf', RandomForestClassifier()),
     ('nb', GaussianNB()),
     ('svm', SVC(probability=True))
-], voting='soft')  # Experiment with 'hard' or 'soft' voting
+], voting='soft') 
 
-# Train the ensemble classifier
 ensemble_classifier.fit(X_train, y_train)
 
 all_symptoms = [
@@ -82,15 +75,12 @@ def login():
         username = request.form['username']
         password = request.form['password']
 
-        # Get a database connection
         conn = get_db_connection()
         cursor = conn.cursor()
 
-        # Query the database for the user's credentials
         cursor.execute('SELECT * FROM solution WHERE username = ? AND password = ?', (username, password))
         user_data = cursor.fetchone()  # Fetch one row
 
-        # Close the cursor and database connection
         cursor.close()
         conn.close()
 
@@ -101,8 +91,7 @@ def login():
         else:
             error = 'Invalid credentials. Please try again.'
             return render_template('login.html', error=error)
-    
-    # Render the login page for GET requests
+
     return render_template('login.html')
 
 conn = sqlite3.connect('solution.db')
@@ -118,11 +107,9 @@ def signup_page():
         password = request.form.get('password')
         confirm_password = request.form.get('confirm-password')
 
-        # Check if passwords match
         if password != confirm_password:
             return render_template('signup.html', error='Passwords do not match.')
 
-        # Connect to the database and insert user data
         conn = sqlite3.connect('solution.db')
         cursor = conn.cursor()
         cursor.execute('INSERT INTO solution (username, email, password) VALUES (?, ?, ?)', (username, email, password))
@@ -132,7 +119,6 @@ def signup_page():
         # Redirect to signup success page
         return redirect(url_for('signup_success'))
 
-    # Render the signup form
     return render_template('signup.html')
 
 @app.route('/signup_success')
@@ -140,7 +126,6 @@ def signup_success():
     return render_template('signup_success.html')
 
 
-# Route to serve the index.html file
 @app.route('/index')
 def index():
     return render_template('index.html')
@@ -153,13 +138,12 @@ def process_form():
     # Create an array to store the symptoms data
     symptoms_array = np.array([[1 if sym in symptoms else 0 for sym in all_symptoms]])
 
-    # Make predictions using the ensemble classifier (not defined in your code snippet)
+    # Make predictions using the ensemble classifier
     predicted_label = ensemble_classifier.predict(symptoms_array)
     predicted_disease = le.inverse_transform(predicted_label)
 
     remedy_info = home_remedies.get(predicted_disease[0], [])
 
-    # Return the predicted disease and home remedy as JSON response
     return jsonify({'predicted_disease': predicted_disease[0], 'remedy_info': remedy_info})
 
 
@@ -167,7 +151,7 @@ def send_notification(title, message, description):
     notification.notify(
         title=title,
         message=f"{message}\n\nDescription: {description}",
-        timeout=1  # Notification timeout in seconds
+        timeout=1 
     )
     print(f"Notification sent - Title: {title}, Message: {message}, Description: {description}")
 
