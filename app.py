@@ -84,7 +84,6 @@ def login():
         cursor.close()
         conn.close()
 
-        # Check if the user exists
         if user_data:
             # Redirect to the index page after successful login
             return redirect(url_for('index'))
@@ -116,7 +115,6 @@ def signup_page():
         conn.commit()
         conn.close()
 
-        # Redirect to signup success page
         return redirect(url_for('signup_success'))
 
     return render_template('signup.html')
