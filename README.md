@@ -20,7 +20,7 @@ This project is a web-based health care monitor that includes an ML model for di
 ## Screenshots
 
 ### Sign up Page
-![Sign up page](images\sign_up.png)
+![Sign up page](images/sign_up.png)
 
 ### Login Page
 ![Login page](images/login.png)
@@ -32,10 +32,10 @@ This project is a web-based health care monitor that includes an ML model for di
 ![Prediction](images/prediction.png)
 
 ### Add notification
-![Add notification](images\add_notification.png)
+![Add notification](images/add_notification.png)
 
 ### Getting notification
-![Getting notification](images\getting_notification.png)
+![Getting notification](images/getting_notification.png)
 
 ## Installation
 
