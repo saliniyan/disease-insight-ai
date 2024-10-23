@@ -7,67 +7,103 @@
 <title>Symptoms Check</title>
 <style>
     body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-        background-color: #f0f0f0;
+    font-family: 'Roboto', sans-serif;
+    margin: 20px;
+    background-color: #c0d4dd;
+    color: #333; /* Improve text color contrast */
     }
 
     .container {
         max-width: 800px;
         margin: 0 auto;
-        background-color: rgba(255, 255, 255, 0.9); /*transparency */
-        opacity: 0.9; 
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        margin-top: 20px;
+        background-color: #eff9fd;
+        opacity: 0.95;
+        padding: 30px;
+        border-radius: 12px; /* More rounded corners */
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        margin-top: 40px;
     }
 
     h1 {
         text-align: center;
+        font-size: 28px;
+        color: #4CAF50; /* Add color to heading */
         margin-bottom: 20px;
+    }
+
+    #searchInput {
+        width: 80%;
+        padding: 10px;
+        border: 2px solid #4CAF50;
+        border-radius: 6px;
+        font-size: 16px;
+        outline: none;
+        transition: 0.3s;
+    }
+
+    #searchInput:focus {
+        border-color: #388E3C;
     }
 
     .checkbox-group {
-        margin-bottom: 20px;
-    }
-
-    label {
-        display: block;
-        margin-bottom: 10px;
-    }
-    .button-container {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh; 
-        background-color: #000000; /* Black background */
-    }
-
-    .colorful-button {
-        padding: 5px 12px;
-        background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
-        color: #FFFFFF; /* White text color */
-        border-radius: 5px;
-        border: none;
-        cursor: pointer;
-        font-size: 12px;
-        text-align: center;
-        text-decoration: none;
-        transition: background-color 0.3s ease;
-        margin-left: 10px;
-    }
-
-    .colorful-button:hover {
-        background-image: linear-gradient(144deg, #00DDEB,#5B42F3 50%,#AF40FF);
-    }
-
-    #result {
+        flex-wrap: wrap;
+        justify-content: space-between;
         margin-top: 20px;
     }
 
-    #remedies {
-        margin-top: 10px;
+    .checkbox-label {
+        display: inline-block;
+        width: 45%; /* Two per row */
+        background-color: #f9f9f9;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .checkbox-label:hover {
+        background-color: #e0f7fa; /* Light blue highlight */
+    }
+
+    label input[type="checkbox"] {
+        margin-right: 12px;
+    }
+
+    label input[type="checkbox"]:checked + .checkbox-label {
+    background-color: #2196F3; /* Blue color when selected */
+    color: white; /*change text color to white */
+    border-color: #1976D2;
+    }
+
+    .colorful-button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        margin-top: 20px;
+        display: block;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .colorful-button:hover {
+        background-color: #388E3C;
+    }
+
+    #result, #remedies {
+        margin-top: 20px;
+        font-size: 18px;
     }
 
     #bg-video {
@@ -78,7 +114,9 @@
         height: 100%;
         object-fit: cover;
         z-index: -1;
-    }
+        filter: brightness(0.7); /* Darken background video for contrast */
+}
+
 </style>
 
 </head>
