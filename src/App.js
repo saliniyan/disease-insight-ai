@@ -6,12 +6,11 @@ function App() {
   const [symptoms, setSymptoms] = useState([]);
   const [prediction, setPrediction] = useState(null);
   const [error, setError] = useState(null);
-  const [showDescription, setShowDescription] = useState(true); // State to track whether to show description or remedies
-  const [showHomeRemedies, setShowHomeRemedies] = useState(false); // Separate state for remedies
+  const [activeTab, setActiveTab] = useState("description"); // New state for active tab
 
   const all_symptoms = [
     "itching", "weight_loss", "dark_urine", "excessive_hunger", "sweating", "loss_of_appetite", "skin_rash",
-    "headache", "stomach_pain", "ulcers_on_tongue", "dehydration", "family_history", "mucoid_sputum",
+    "headache", "stomach_pain", "ulcers_on_tongue", "dehydration", "fatigue", "mucoid_sputum",
     "extra_marital_contacts", "unsteadiness", "mood_swings", "malaise", "back_pain", "swelling_joints",
     "knee_pain", "indigestion", "pain_during_bowel_movements", "toxic_look_(typhos)", "throat_irritation",
     "shivering", "fatigue", "pain_in_back", "chills", "dizziness", "increased_appetite", "enlarged_thyroid",
@@ -68,18 +67,6 @@ function App() {
     }
   };
 
-  // Set to show the description
-  const showDescriptionContent = () => {
-    setShowDescription(true);
-    setShowHomeRemedies(false); // Hide remedies when showing description
-  };
-
-  // Set to show the home remedies
-  const showHomeRemediesContent = () => {
-    setShowHomeRemedies(true);
-    setShowDescription(false); // Hide description when showing remedies
-  };
-
   return (
     <div style={{ textAlign: "center", marginTop: "50px" }}>
       <h1>Disease Prediction</h1>
@@ -91,6 +78,7 @@ function App() {
                 type="checkbox"
                 value={symptom}
                 onChange={handleCheckboxChange}
+                style={{ transform: 'scale(0.7)' }} // Reduced checkbox size
               />
               {symptom.replace("_", " ").toUpperCase()}
             </label>
@@ -114,55 +102,34 @@ function App() {
         <>
           <h3>Predicted Disease: {prediction}</h3>
 
-          {/* Button Group */}
-          <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
-            <button
-              onClick={showDescriptionContent}
-              style={{
-                marginRight: "10px",
-                padding: "10px 20px",
-                cursor: "pointer",
-                backgroundColor: "#4CAF50",
-                color: "white",
-                border: "none",
-              }}
+          {/* Tab Navigation */}
+          <div className="tabs">
+            <div
+              className={`tab ${activeTab === "description" ? "active" : ""}`}
+              onClick={() => setActiveTab("description")}
             >
               Description
-            </button>
-            <button
-              onClick={showHomeRemediesContent}
-              style={{
-                padding: "10px 20px",
-                cursor: "pointer",
-                backgroundColor: "#008CBA",
-                color: "white",
-                border: "none",
-              }}
+            </div>
+            <div
+              className={`tab ${activeTab === "remedies" ? "active" : ""}`}
+              onClick={() => setActiveTab("remedies")}
             >
               Home Remedies
-            </button>
+            </div>
           </div>
 
-          {/* Message Box */}
-          <div
-            style={{
-              marginTop: "20px",
-              padding: "20px",
-              border: "1px solid #ccc",
-              borderRadius: "5px",
-              maxWidth: "600px",
-              marginLeft: "auto",
-              marginRight: "auto",
-              textAlign: "left",
-              backgroundColor: "#f9f9f9",
-            }}
-          >
-            {showDescription ? (
-              <p>
-                <strong>Description:</strong> {diseaseInfo[prediction] || "No information available."}
-              </p>
-            ) : (
-              <>
+          {/* Tab Content */}
+          <div className="tab-content">
+            {activeTab === "description" && (
+              <div className="tab-pane">
+                <p>
+                  <strong>Description:</strong> {diseaseInfo[prediction] || "No information available."}
+                </p>
+              </div>
+            )}
+            
+            {activeTab === "remedies" && (
+              <div className="tab-pane">
                 {home_remedies[prediction] ? (
                   <>
                     <h4>Home Remedies:</h4>
@@ -175,7 +142,7 @@ function App() {
                 ) : (
                   <p>No home remedies available for this disease.</p>
                 )}
-              </>
+              </div>
             )}
           </div>
         </>
