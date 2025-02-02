@@ -6,14 +6,15 @@ function App() {
   const [symptoms, setSymptoms] = useState([]);
   const [prediction, setPrediction] = useState(null);
   const [error, setError] = useState(null);
-  const [showHomeRemedies, setShowHomeRemedies] = useState(false); // New state for toggling content
+  const [showDescription, setShowDescription] = useState(true); // State to track whether to show description or remedies
+  const [showHomeRemedies, setShowHomeRemedies] = useState(false); // Separate state for remedies
 
   const all_symptoms = [
     "itching", "weight_loss", "dark_urine", "excessive_hunger", "sweating", "loss_of_appetite", "skin_rash",
     "headache", "stomach_pain", "ulcers_on_tongue", "dehydration", "family_history", "mucoid_sputum",
     "extra_marital_contacts", "unsteadiness", "mood_swings", "malaise", "back_pain", "swelling_joints",
     "knee_pain", "indigestion", "pain_during_bowel_movements", "toxic_look_(typhos)", "throat_irritation",
-    "shivering", "fatigue", "Unnamed: 26", "chills", "dizziness", "increased_appetite", "enlarged_thyroid",
+    "shivering", "fatigue", "pain_in_back", "chills", "dizziness", "increased_appetite", "enlarged_thyroid",
     "yellowing_of_eyes", "puffy_face_and_eyes", "diarrhoea", "constipation", "internal_itching", "hip_joint_pain",
     "burning_micturition", "breathlessness", "redness_of_eyes", "mild_fever", "drying_and_tingling_lips",
     "irregular_sugar_level", "cold_hands_and_feets", "continuous_sneezing", "neck_pain", "passage_of_gases",
@@ -67,9 +68,16 @@ function App() {
     }
   };
 
-  // Toggle function for showing home remedies
-  const toggleContent = () => {
-    setShowHomeRemedies((prev) => !prev);
+  // Set to show the description
+  const showDescriptionContent = () => {
+    setShowDescription(true);
+    setShowHomeRemedies(false); // Hide remedies when showing description
+  };
+
+  // Set to show the home remedies
+  const showHomeRemediesContent = () => {
+    setShowHomeRemedies(true);
+    setShowDescription(false); // Hide description when showing remedies
   };
 
   return (
@@ -109,7 +117,7 @@ function App() {
           {/* Button Group */}
           <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
             <button
-              onClick={toggleContent}
+              onClick={showDescriptionContent}
               style={{
                 marginRight: "10px",
                 padding: "10px 20px",
@@ -122,7 +130,7 @@ function App() {
               Description
             </button>
             <button
-              onClick={toggleContent}
+              onClick={showHomeRemediesContent}
               style={{
                 padding: "10px 20px",
                 cursor: "pointer",
@@ -149,23 +157,25 @@ function App() {
               backgroundColor: "#f9f9f9",
             }}
           >
-            {showHomeRemedies ? (
-              home_remedies[prediction] ? (
-                <>
-                  <h4>Home Remedies:</h4>
-                  <ul>
-                    {home_remedies[prediction].map((remedy, index) => (
-                      <li key={index}>{remedy}</li>
-                    ))}
-                  </ul>
-                </>
-              ) : (
-                <p>No home remedies available for this disease.</p>
-              )
-            ) : (
+            {showDescription ? (
               <p>
                 <strong>Description:</strong> {diseaseInfo[prediction] || "No information available."}
               </p>
+            ) : (
+              <>
+                {home_remedies[prediction] ? (
+                  <>
+                    <h4>Home Remedies:</h4>
+                    <ul>
+                      {home_remedies[prediction].map((remedy, index) => (
+                        <li key={index}>{remedy}</li>
+                      ))}
+                    </ul>
+                  </>
+                ) : (
+                  <p>No home remedies available for this disease.</p>
+                )}
+              </>
             )}
           </div>
         </>
