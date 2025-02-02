@@ -1,87 +1,70 @@
-# Health care Monitor
+# Getting Started with Create React App
 
-This project is a web-based health care monitor that includes an ML model for disease prediction using symptoms. After predicting the disease, it suggests a home remedy. Additionally, it features a notification system to remind users to take their medication at the correct times.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Features
+## Available Scripts
 
-- **User Authentication**:  Secure login and registration for users.
-- **Search bar**:: Users can search for symptoms in the search bar.
-- **Predicting disease**: The model can predict 27 different diseases.
-- **Notification system**:  Users can set reminders with custom messages.
+In the project directory, you can run:
 
-## About the model
-- Model Accuracy: 80.25%
--Algorithms used in the model:
-    KNeighborsClassifier
-    RandomForestClassifier
-    GaussianNB
-    SVC
+### `npm start`
 
-## Screenshots
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-### Sign up Page
-![Sign up page](images/sign_up.png)
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-### Login Page
-![Login page](images/login.png)
+### `npm test`
 
-### Selecting symptoms
-![Selecting symptoms](images/symptoms.png)
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### Prediction
-![Prediction](images/prediction.png)
+### `npm run build`
 
-### Add notification
-![Add notification](images/add_notification.png)
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-### Getting notification
-![Getting notification](images/getting_notification.png)
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-## Installation
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### Prerequisites
+### `npm run eject`
 
-- Python 3.1.0
-- Flask
-- SQLite
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-### Steps
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-1. **Clone the repository:**
-    ```bash
-    git clone https://github.com/saliniyan/health-care-monitor
-    ```
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-2. **Navigate to the project directory:**
-    ```bash
-    cd health-care-monitor
-    ```
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-3. **Create a virtual environment (optional but recommended):**
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
-    ```
+## Learn More
 
-4. **Install the required dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-5. **Run the application:**
-    ```bash
-    python index.py
-    ```
+### Code Splitting
 
-## Usage
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-1. Open your web browser and go to `http://localhost:5000`.
-2. Register for a new account or log in with an existing one.
-3. Search and select symptoms to predict diseases and view recommended remedies.
-4. Use the notification system to set reminders with custom messages.
+### Analyzing the Bundle Size
 
-## Contact
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-For any questions or feedback, please open an issue on GitHub or contact saliniyanp02@gmail.com.
+### Making a Progressive Web App
 
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

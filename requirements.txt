@@ -1,8 +1,0 @@
-﻿APScheduler==3.10.4
-Flask==2.x
-Flask-MySQLdb==1.x
-python==3.10
-schedule==1.2.1
-scikit-image==0.23.1
-scikit-learn==1.3.2
-scipy==1.11.4

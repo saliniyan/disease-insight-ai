@@ -1,0 +1,113 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0 20%; /* Adds 10px space on left and right */
+  background-color: #c0d4dd;
+  color: #333;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #eff9fd;
+  opacity: 0.95;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 40px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 28px;
+  color: #4CAF50; /* Add color to heading */
+  margin-bottom: 20px;
+}
+
+#searchInput {
+  width: 80%;
+  padding: 10px;
+  border: 2px solid #4CAF50;
+  border-radius: 6px;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s;
+}
+
+#searchInput:focus {
+  border-color: #388E3C;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 10px; /* This sets the space between the checkboxes */
+}
+
+.checkbox-label {
+  display: inline-block;
+  width: 45%; /* Two per row */
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin-bottom: 3px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  font-size: 16px; /* Font size of the labels */
+  cursor: pointer;
+}
+
+.checkbox-label:hover {
+  background-color: #e0f7fa; /* Light blue highlight */
+}
+
+label input[type="checkbox"] {
+  margin-right: 12px;
+  transform: scale(0.8); /* Reduce checkbox size */
+}
+
+label input[type="checkbox"]:checked + .checkbox-label {
+  background-color: #2196F3; /* Blue color when selected */
+  color: white; /* Change text color to white */
+  border-color: #1976D2;
+}
+
+.colorful-button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.colorful-button:hover {
+  background-color: #388E3C;
+}
+
+#result, #remedies {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(0.7); /* Darken background video for contrast */
+}
