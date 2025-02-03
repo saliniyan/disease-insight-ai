@@ -22,6 +22,7 @@ try:
     scaler_heart = joblib.load("backend/scaler_heart.joblib")
     lung_model = joblib.load("backend/lung_cancer_model.joblib")
     scaler_lung = joblib.load("backend/scaler_lung_cancer.joblib")
+    ensemble_classifier = joblib.load("/home/saliniyan/Documents/git_project/health-care-monitor/model_for_disease_prediction.joblib")  # Use relative path
 except Exception as e:
     heart_model, scaler_heart, lung_model, scaler_lung = None, None, None, None
     print(f"⚠️ Error loading model or scaler: {e}")
@@ -32,14 +33,14 @@ all_symptoms = [
     "headache", "stomach_pain", "ulcers_on_tongue", "dehydration", "family_history", "mucoid_sputum",
     "extra_marital_contacts", "unsteadiness", "mood_swings", "malaise", "back_pain", "swelling_joints",
     "knee_pain", "indigestion", "pain_during_bowel_movements", "toxic_look_(typhos)", "throat_irritation",
-    "shivering", "fatigue", "chills", "dizziness", "increased_appetite", "enlarged_thyroid",
+    "shivering", "fatigue", "Unnamed: 26", "chills", "dizziness", "increased_appetite", "enlarged_thyroid",
     "yellowing_of_eyes", "puffy_face_and_eyes", "diarrhoea", "constipation", "internal_itching", "hip_joint_pain",
     "burning_micturition", "breathlessness", "redness_of_eyes", "mild_fever", "drying_and_tingling_lips",
     "irregular_sugar_level", "cold_hands_and_feets", "continuous_sneezing", "neck_pain", "passage_of_gases",
-    "nausea", "sinus_pressure", "belly_pain", "weakness_of_one_body_side", "painful_walking", "spotting_urination",
+    "nausea", "sinus_pressure", "belly_pain", "weakness_of_one_body_side", "painful_walking", "spotting_ urination",
     "joint_pain", "muscle_weakness", "polyuria", "watering_from_eyes", "restlessness", "slurred_speech",
-    "irritation_in_anus", "yellowish_skin", "bloody_stool", "pain_behind_the_eyes", "dischromic_patches",
-    "swollen_extremities", "abdominal_pain", "pain_in_anal_region", "loss_of_smell", "phlegm", "vomiting",
+    "irritation_in_anus", "yellowish_skin", "bloody_stool", "pain_behind_the_eyes", "dischromic _patches",
+    "swollen_extremeties", "abdominal_pain", "pain_in_anal_region", "loss_of_smell", "phlegm", "vomiting",
     "sunken_eyes", "blurred_and_distorted_vision", "acidity", "weakness_in_limbs", "anxiety", "muscle_pain",
     "red_spots_over_body", "congestion", "lethargy", "muscle_wasting", "obesity", "visual_disturbances",
     "brittle_nails", "spinning_movements", "high_fever", "lack_of_concentration", "chest_pain", "cough",
@@ -48,9 +49,9 @@ all_symptoms = [
     "nodal_skin_eruptions", "blood_in_sputum"
 ]
 
-@app.route('/predict_disease', methods=['POST'])
-def predict_disease():
-    if not heart_model:
+@app.route('/process_form', methods=['POST'])
+def process_form():
+    if not ensemble_classifier:
         return jsonify({"error": "Model not loaded"}), 500
 
     try:
@@ -60,21 +61,23 @@ def predict_disease():
         if not symptoms:
             return jsonify({"error": "No symptoms selected"}), 400
 
-        # Encode symptoms into binary format
+        # Ensure the symptoms are encoded correctly
         encoded_symptoms = [1 if symptom in symptoms else 0 for symptom in all_symptoms]
 
-        # Convert to NumPy array & reshape
+        # Convert to NumPy array and reshape for prediction
         symptoms_array = np.array(encoded_symptoms).reshape(1, -1)
 
-        # Predict disease
-        prediction = heart_model.predict(symptoms_array)
+        # Make prediction using the ensemble classifier
+        prediction = ensemble_classifier.predict(symptoms_array)
+        
+        # Decode the predicted disease label back to the disease name
         predicted_disease = le.inverse_transform(prediction)
 
-        return jsonify({"disease": str(predicted_disease[0])})
+        response = {"disease": predicted_disease[0]}
+        return jsonify(response)
 
     except Exception as e:
         return jsonify({"error": str(e)}), 400
-
 @app.route('/predict_heart_disease', methods=['POST'])
 def predict_heart_disease():
     if not heart_model or not scaler_heart:
