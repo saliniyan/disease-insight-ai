@@ -29,13 +29,13 @@ const App = () => {
           className={activeTab === "Heart" ? "tab active" : "tab"}
           onClick={() => setActiveTab("Heart")}
         >
-          📖 Heart Disease
+          🫀 Heart Disease
         </button>
         <button
           className={activeTab === "Lung" ? "tab active" : "tab"}
           onClick={() => setActiveTab("Lung")}
         >
-          📖 Lung cancer
+          🫁 Lung cancer
         </button>
         <button
           className={activeTab === "Blog" ? "tab active" : "tab"}
