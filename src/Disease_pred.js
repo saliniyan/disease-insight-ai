@@ -6,7 +6,8 @@ function Disease_pred() {
   const [symptoms, setSymptoms] = useState([]);
   const [prediction, setPrediction] = useState(null);
   const [error, setError] = useState(null);
-  const [activeTab, setActiveTab] = useState("description"); // New state for active tab
+  const [activeTab, setActiveTab] = useState("description");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const all_symptoms = [
     "itching", "weight_loss", "dark_urine", "excessive_hunger", "sweating", "loss_of_appetite", "skin_rash",
@@ -17,9 +18,9 @@ function Disease_pred() {
     "yellowing_of_eyes", "puffy_face_and_eyes", "diarrhoea", "constipation", "internal_itching", "hip_joint_pain",
     "burning_micturition", "breathlessness", "redness_of_eyes", "mild_fever", "drying_and_tingling_lips",
     "irregular_sugar_level", "cold_hands_and_feets", "continuous_sneezing", "neck_pain", "passage_of_gases",
-    "nausea", "sinus_pressure", "belly_pain", "weakness_of_one_body_side", "painful_walking", "spotting_ urination",
+    "nausea", "sinus_pressure", "belly_pain", "weakness_of_one_body_side", "painful_walking", "spotting_urination",
     "joint_pain", "muscle_weakness", "polyuria", "watering_from_eyes", "restlessness", "slurred_speech",
-    "irritation_in_anus", "yellowish_skin", "bloody_stool", "pain_behind_the_eyes", "dischromic _patches",
+    "irritation_in_anus", "yellowish_skin", "bloody_stool", "pain_behind_the_eyes", "dischromic_patches",
     "swollen_extremeties", "abdominal_pain", "pain_in_anal_region", "loss_of_smell", "phlegm", "vomiting",
     "sunken_eyes", "blurred_and_distorted_vision", "acidity", "weakness_in_limbs", "anxiety", "muscle_pain",
     "red_spots_over_body", "congestion", "lethargy", "muscle_wasting", "obesity", "visual_disturbances",
@@ -28,6 +29,10 @@ function Disease_pred() {
     "loss_of_balance", "swelled_lymph_nodes", "palpitations", "fast_heart_rate", "weight_gain", "runny_nose",
     "nodal_skin_eruptions", "blood_in_sputum"
   ];
+
+  const filteredSymptoms = all_symptoms.filter(symptom => 
+    symptom.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const handleCheckboxChange = (event) => {
     const value = event.target.value;
@@ -71,14 +76,21 @@ function Disease_pred() {
     <div className="disease">
       <h1>Disease Prediction</h1>
       <form>
+        <input
+          type="text"
+          placeholder="Search symptoms..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="searchInput"
+        />
         <div className="checkbox-group">
-          {all_symptoms.map((symptom) => (
+          {filteredSymptoms.map((symptom) => (
             <label key={symptom} className="checkbox-label">
               <input
                 type="checkbox"
                 value={symptom}
                 onChange={handleCheckboxChange}
-                style={{ transform: 'scale(0.7)' }} // Reduced checkbox size
+                style={{ transform: 'scale(0.7)' }}
               />
               {symptom.replace("_", " ").toUpperCase()}
             </label>
@@ -88,11 +100,7 @@ function Disease_pred() {
           type="button"
           onClick={handleSubmit}
           className="colorful-button"
-          style={{
-            padding: "10px 20px",
-            cursor: "pointer",
-            marginTop: "20px",
-          }}
+          style={{ padding: "10px 20px", cursor: "pointer", marginTop: "20px" }}
         >
           Submit
         </button>
@@ -100,8 +108,6 @@ function Disease_pred() {
       {prediction && (
         <>
           <h3>Predicted Disease: {prediction}</h3>
-
-          {/* Tab Navigation */}
           <div className="tabs">
             <div
               className={`tab ${activeTab === "description" ? "active" : ""}`}
@@ -116,28 +122,16 @@ function Disease_pred() {
               Home Remedies
             </div>
           </div>
-
-          {/* Tab Content */}
           <div className="tab-content">
             {activeTab === "description" && (
               <div className="tab-pane">
-                <p>
-                  <strong>Description:</strong> {diseaseInfo[prediction] || "No information available."}
-                </p>
+                <p><strong>Description:</strong> {diseaseInfo[prediction] || "No information available."}</p>
               </div>
             )}
-            
             {activeTab === "remedies" && (
               <div className="tab-pane">
                 {home_remedies[prediction] ? (
-                  <>
-                    <h4>Home Remedies:</h4>
-                    <ul>
-                      {home_remedies[prediction].map((remedy, index) => (
-                        <li key={index}>{remedy}</li>
-                      ))}
-                    </ul>
-                  </>
+                  <ul>{home_remedies[prediction].map((remedy, index) => <li key={index}>{remedy}</li>)}</ul>
                 ) : (
                   <p>No home remedies available for this disease.</p>
                 )}
@@ -147,7 +141,11 @@ function Disease_pred() {
         </>
       )}
       {error && <p style={{ color: "red" }}>{error}</p>}
-      <p>----</p>
+      <div>
+        <br />
+        <br />
+        <br />
+      </div>
     </div>
   );
 }

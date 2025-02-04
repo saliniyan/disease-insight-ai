@@ -10,66 +10,67 @@
   overflow-y: auto; /* Enable scrolling */
 }
 
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  background-color: #eff9fd;
-  opacity: 0.95;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-  margin-top: 20px; /* Reduced margin to avoid content being cut off */
-  flex-grow: 1; /* Ensures the container takes up available space */
-}
-
-h1 {
+.disease h1 {
   text-align: center;
   font-size: 28px;
-  color: #4CAF50; /* Add color to heading */
+  color: #4CAF50; /* Heading color */
   margin-bottom: 20px;
 }
 
-#searchInput:focus {
+.disease .searchInput {
+  width: 80%;
+  padding: 10px;
+  border: 2px solid #4CAF50;
+  border-radius: 6px;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s;
+  margin-bottom: 20px;
+}
+
+.disease .searchInput:focus {
   border-color: #388E3C;
 }
 
-.checkbox-group {
+.disease .checkbox-group {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  gap: 10px;
   margin-top: 20px;
-  gap: 10px; /* This sets the space between the checkboxes */
 }
 
-.checkbox-label {
-  display: inline-block;
+.disease label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; /* Adjusts space between checkboxes */
+}
+
+.disease .checkbox-label {
+  display: inline-flex;
+  align-items: center; /* Ensures checkbox and text are aligned horizontally */
   width: 45%; /* Two per row */
   background-color: #f9f9f9;
   padding: 10px;
-  margin-bottom: 3px;
   border: 1px solid #ddd;
   border-radius: 8px;
   transition: background-color 0.3s ease;
-  font-size: 16px; /* Font size of the labels */
+  font-size: 16px;
   cursor: pointer;
 }
 
-.checkbox-label:hover {
-  background-color: #e0f7fa; /* Light blue highlight */
+.disease label input[type="checkbox"] {
+  margin-right: 8px; /* Adds a little more space between checkbox and text */
+  transform: scale(0.8); /* Keep the checkbox size smaller */
 }
 
-label input[type="checkbox"] {
-  margin-right: 3px;
-  transform: scale(0.8); /* Reduce checkbox size */
-}
-
-label input[type="checkbox"]:checked + .checkbox-label {
+.disease label input[type="checkbox"]:checked + .checkbox-label {
   background-color: #2196F3; /* Blue color when selected */
   color: white; /* Change text color to white */
   border-color: #1976D2;
 }
 
-.colorful-button {
+.disease .colorful-button {
   padding: 10px 20px;
   background-color: #4CAF50;
   color: white;
@@ -87,27 +88,11 @@ label input[type="checkbox"]:checked + .checkbox-label {
   margin-right: auto;
 }
 
-.colorful-button:hover {
+.disease .colorful-button:hover {
   background-color: #388E3C;
 }
 
-#result, #remedies {
-  margin-top: 20px;
-  font-size: 18px;
-}
-
-#bg-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-  filter: brightness(0.7); /* Darken background video for contrast */
-}
-
-.tabs {
+.disease .tabs {
   display: flex;
   justify-content: center;
   gap: 20px;
@@ -115,7 +100,7 @@ label input[type="checkbox"]:checked + .checkbox-label {
   border-bottom: 2px solid #ddd;
 }
 
-.tab {
+.disease .tab {
   padding: 10px 20px;
   cursor: pointer;
   position: relative;
@@ -123,11 +108,11 @@ label input[type="checkbox"]:checked + .checkbox-label {
   transition: all 0.3s ease;
 }
 
-.tab.active {
+.disease .tab.active {
   color: #4CAF50;
 }
 
-.tab.active::after {
+.disease .tab.active::after {
   content: '';
   position: absolute;
   bottom: -2px;
@@ -137,7 +122,7 @@ label input[type="checkbox"]:checked + .checkbox-label {
   background-color: #4CAF50;
 }
 
-.tab-content {
+.disease .tab-content {
   margin-top: 20px;
   padding: 20px;
   border: 1px solid #ddd;
@@ -149,11 +134,35 @@ label input[type="checkbox"]:checked + .checkbox-label {
   text-align: left;
 }
 
-.tab-pane {
+.disease .tab-pane {
   animation: fadeIn 0.3s ease;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.disease .error {
+  color: red;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.disease .result {
+  margin-top: 20px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.disease .disease-description,
+.disease .home-remedies {
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.disease .disease-description ul,
+.disease .home-remedies ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.disease .disease-description ul li,
+.disease .home-remedies ul li {
+  margin: 10px 0;
 }

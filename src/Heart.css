@@ -1,0 +1,105 @@
+.disease {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0 20%;
+    background-color: #c0d4dd;
+    color: #333;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #eff9fd;
+    opacity: 0.95;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 28px;
+    color: #000000;
+    margin-bottom: 20px;
+  }
+  
+  /* Grid layout for inputs */
+  .input-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 15px;
+  }
+  
+  /* Each input group */
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Label styling */
+  .input-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  /* Number input field with increment/decrement buttons */
+  .input-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #e3e6e8;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  
+  .input-box input {
+    width: 60px;
+    text-align: center;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+  }
+  
+  .input-box button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background 0.3s;
+  }
+  
+  .input-box button:hover {
+    background: #29632b;
+  }
+  
+  /* Submit button */
+  .colorful-button {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .colorful-button:hover {
+    background: #29632b;
+  }
+  
