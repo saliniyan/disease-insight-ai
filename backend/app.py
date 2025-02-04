@@ -22,7 +22,7 @@ try:
     scaler_heart = joblib.load("backend/scaler_heart.joblib")
     lung_model = joblib.load("backend/lung_cancer_model.joblib")
     scaler_lung = joblib.load("backend/scaler_lung_cancer.joblib")
-    ensemble_classifier = joblib.load("/home/saliniyan/Documents/git_project/health-care-monitor/model_for_disease_prediction.joblib")  # Use relative path
+    ensemble_classifier = joblib.load("backend/model_for_disease_prediction.joblib") 
 except Exception as e:
     heart_model, scaler_heart, lung_model, scaler_lung = None, None, None, None
     print(f"⚠️ Error loading model or scaler: {e}")

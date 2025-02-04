@@ -67,7 +67,6 @@ const Lung = () => {
             <option value="F">Female</option>
           </select>
         </div>
-
         <div>
           <label>Age:</label>
           <input type="number" name="AGE" value={formData.AGE} onChange={handleChange} className="input-field" required />

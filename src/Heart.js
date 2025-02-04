@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState } from "react"; 
 import "./Heart.css";
 
 function Heart() {
   const [formData, setFormData] = useState({
     Age: 25,
-    Sex: 0,
+    Sex: 0, // 0 for Male, 1 for Female
     ChestPainType: 1,
     BP: 120,
     Cholesterol: 200,
@@ -64,13 +64,25 @@ function Heart() {
             <div className="input-group" key={key}>
               <label>{key.replace(/([A-Z])/g, " $1")}</label>
               <div className="input-box">
-                <button onClick={() => handleDecrement(key)}>-</button>
-                <input
-                  type="number"
-                  value={formData[key]}
-                  onChange={(e) => handleChange(key, Number(e.target.value))}
-                />
-                <button onClick={() => handleIncrement(key)}>+</button>
+                {key === "Sex" ? (
+                  <select
+                    value={formData[key]}
+                    onChange={(e) => handleChange(key, Number(e.target.value))}
+                  >
+                    <option value={0}>Male</option>
+                    <option value={1}>Female</option>
+                  </select>
+                ) : (
+                  <>
+                    <button onClick={() => handleDecrement(key)}>-</button>
+                    <input
+                      type="number"
+                      value={formData[key]}
+                      onChange={(e) => handleChange(key, Number(e.target.value))}
+                    />
+                    <button onClick={() => handleIncrement(key)}>+</button>
+                  </>
+                )}
               </div>
             </div>
           ))}
