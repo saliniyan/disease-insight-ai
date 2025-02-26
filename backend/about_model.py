@@ -47,10 +47,10 @@ print(f'Accuracy: {accuracy * 100:.2f}%')
 print("Classification Report:\n")
 print(classification_report(y_test, y_pred))
 
-joblib.dump(ensemble_classifier, 'model_for_disease_prediction.joblib')
-print("Model saved as 'model_for_disease_prediction.joblib'") '''
+joblib.dump(ensemble_classifier, 'backend/model_for_disease_prediction.joblib')
+print("Model saved as 'backend/model_for_disease_prediction.joblib'") '''
 
-ensemble_classifier = joblib.load('model_for_disease_prediction.joblib')
+ensemble_classifier = joblib.load('backend/model_for_disease_prediction.joblib')
 
 accuracy = ensemble_classifier.score(X_test, y_test)
 print(f"Model Accuracy: {accuracy}")

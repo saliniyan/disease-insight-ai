@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# Disease Insight AI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+Disease Insight AI is a web-based application that predicts diseases based on user-inputted symptoms and provides descriptions of diseases along with corresponding home remedies. The system leverages machine learning to analyze symptoms and suggest potential diagnoses, assisting users in gaining insights into their health conditions.
 
-## Available Scripts
+## Features
+- **Symptom-Based Disease Prediction**: Users can input symptoms to receive predictions of possible diseases.
+- **Home Remedies & Health Insights**: Provides remedies and general information about predicted diseases.
+- **Interactive & User-Friendly UI**: Built with React for a smooth and intuitive experience.
+- **AI-Powered Backend**: Uses a machine learning model to predict diseases.
+- **Fast & Secure API**: A Python-based backend efficiently processes requests and delivers predictions.
+- **Models Used**: This project utilizes three models:
+  1. A model for multiple disease prediction (27 diseases).
+  2. A model specifically for heart disease prediction.
+  3. A model specifically for lung disease prediction.
 
-In the project directory, you can run:
+## Technology Stack
+- **Frontend**: React.js
+- **Backend**: Python (Flask/FastAPI)
+- **Machine Learning**: KNeighborsClassifier, RandomForestClassifier, GaussianNB, SVC
 
-### `npm start`
+## Installation & Setup
+### Prerequisites
+- Node.js & npm installed
+- Python installed
+- Required Python libraries installed
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Steps to Run the Application
+1. Run the Python backend:
+    ```sh
+    cd backend
+    python app.py
+    ```
+2. After running the backend, start the frontend:
+    ```sh
+    cd ..
+    npm start
+    ```
+## Screenshot
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Home Page
+![Home page](images/home.png)
 
-### `npm test`
+### Selection Symptoms
+![Select symptom](images/choose_symptoms.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Disease Prediction and disease descrption
+![Disease Prediction](images/description.png)
 
-### `npm run build`
+### Home remedies
+![Home remedy page](images/home_remedy.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Heart Disease
+![Heart disease](images/heart.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Lung Cancer
+![Lung cancer](images/lung.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Blog page
+![Blog page](images/blog.png)
