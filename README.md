@@ -19,12 +19,6 @@ Disease Insight AI is a web-based application that predicts diseases based on us
 - **Backend**: Python (Flask/FastAPI)
 - **Machine Learning**: KNeighborsClassifier, RandomForestClassifier, GaussianNB, SVC
 
-## Installation & Setup
-### Prerequisites
-- Node.js & npm installed
-- Python installed
-- Required Python libraries installed
-
 ### Steps to Run the Application
 1. Run the Python backend:
     ```sh
