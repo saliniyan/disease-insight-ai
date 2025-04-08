@@ -16,7 +16,7 @@ Disease Insight AI is a web-based application that predicts diseases based on us
 
 ## Technology Stack
 - **Frontend**: React.js
-- **Backend**: Python (Flask/FastAPI)
+- **Backend**: Python
 - **Machine Learning**: KNeighborsClassifier, RandomForestClassifier, GaussianNB, SVC
 
 ### Steps to Run the Application
