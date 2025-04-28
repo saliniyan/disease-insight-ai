@@ -13,6 +13,7 @@ Disease Insight AI is a web-based application that predicts diseases based on us
   1. A model for multiple disease prediction (27 diseases).
   2. A model specifically for heart disease prediction.
   3. A model specifically for lung disease prediction.
+- **Final Test Accuracy:** 83.01%
 
 ## Technology Stack
 - **Frontend**: React.js
@@ -54,4 +55,4 @@ Disease Insight AI is a web-based application that predicts diseases based on us
 ![Blog page](images/blog.png)
 
 ### Accuracy
-![Accuracy](images/image.png)
+![Accuracy](images/accuracy.png)
