@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Load dataset and encode labels
-df1 = pd.read_csv("https://raw.githubusercontent.com/saliniyan/saliniyan.github.io/main/data%20(5).csv")
+df1 = pd.read_csv(r"backend\disease\data_set.csv")
 le = LabelEncoder()
 
 # Encode symptoms (Ensure consistency with model training)

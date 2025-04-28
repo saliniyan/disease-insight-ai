@@ -10,7 +10,7 @@ from sklearn.metrics import accuracy_score, classification_report
 import joblib
 
 # Load the dataset
-df1 = pd.read_csv("https://raw.githubusercontent.com/saliniyan/saliniyan.github.io/main/data%20(5).csv")
+df1 = pd.read_csv(r"backend\disease\data_set.csv") 
 
 # Encode categorical variables
 le = LabelEncoder()
