@@ -55,4 +55,4 @@ Disease Insight AI is a web-based application that predicts diseases based on us
 ![Blog page](images/blog.png)
 
 ### Accuracy
-![Accuracy](images\about.png)
+![Accuracy](images/about.png)
